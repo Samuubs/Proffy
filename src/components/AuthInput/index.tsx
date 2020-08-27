@@ -6,15 +6,16 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     label?: string;
     placeholder?: string;
     name: string;
+    type: string;
 }
 
-const Input: React.FC<InputProps> = ({label, name, placeholder, ...rest}) => {
+const AuthInput: React.FC<InputProps> = ({label, name, placeholder, type, ...rest}) => {
     return (
-        <div className="input-block">
+        <div className="input-auth-block">
             <label htmlFor={name}>{label}</label>
-            <input type="text" id={name} placeholder={placeholder} {...rest} />
+            <input type={type} id={name} placeholder={placeholder} {...rest} />
         </div>
     );
 }
 
-export default Input;
+export default AuthInput;
