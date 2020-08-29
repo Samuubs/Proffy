@@ -13,6 +13,7 @@ import api from '../../services/api';
 
 function Landing() {
     const [totalConnections, setTotalConnections] = useState(0);
+    // teste
 
     useEffect(() => {
         api.get('/connections').then(response => {
