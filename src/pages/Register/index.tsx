@@ -2,10 +2,14 @@ import React, { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 
 import AuthInput from '../../components/AuthInput';
+import AuthSelect from '../../components/AuthSelect';
 
 import Logo from '../../assets/images/logo.svg';
 import Background from '../../assets/images/background.svg';
 import Check from '../../assets/images/icons/check.svg';
+import backIcon from '../../assets/images/icons/back.svg';
+
+import api from '../../services/api';
 
 import './styles.css';
 
@@ -34,24 +38,47 @@ function FinishRegister() {
 function Register() {
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [profile, setProfile] = useState('');
 
     const [registerFinished, setRegisterFinished] = useState(false);
 
     function handleRegister(e: FormEvent) {
         e.preventDefault();
-        setRegisterFinished(true);
-        console.log("Você se cadastrou", registerFinished);
-    }
+        const user = {
+            name,
+            lastName,
+            username,
+            password,
+            profile
+        }
 
+        const response = api.post('/users', user);
+        response.then(newUser => {
+            console.log(newUser);
+            if (response) {
+                setRegisterFinished(true);
+            } else {
+                alert("Erro ao realizar cadastro!");
+            }       
+        }).catch((error) => {
+            console.log(error);
+            alert("Erro ao realizar cadastro!");
+        })
+    }
 
     if (registerFinished) {
         return FinishRegister()
     }
+
     return (
         <div id="register-page-container" className="container">
             <div className="register-container">
+                <Link to="/login" className="backToLogin">
+                    <img src={backIcon} alt="Voltar"/>
+                </Link>
+
                 <main>
                     <h1>Cadastro</h1>
                     <p>
@@ -75,11 +102,11 @@ function Register() {
                         />
 
                         <AuthInput
-                            name="email"
-                            placeholder="E-mail"
+                            name="username"
+                            placeholder="Nome de Usuário"
                             type="text"
-                            value={email}
-                            onChange={(e) => { setEmail(e.target.value) }}
+                            value={username}
+                            onChange={(e) => { setUsername(e.target.value) }}
                         />
 
                         <AuthInput
@@ -88,6 +115,16 @@ function Register() {
                             type="password"
                             value={password}
                             onChange={(e) => { setPassword(e.target.value) }}
+                        />
+
+                        <AuthSelect
+                            name="subject" 
+                            value={profile}
+                            onChange={(e) => setProfile(e.target.value)}
+                            options={[
+                                { value: 'Aluno', label: 'Aluno' },
+                                { value: 'Professor', label: 'Professor' },
+                            ]}
                         />
                         
                         <button type="submit">Concluir cadastro</button>

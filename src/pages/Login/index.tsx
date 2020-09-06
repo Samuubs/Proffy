@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, FormEvent, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
 import AuthInput from '../../components/AuthInput';
 
@@ -7,14 +7,26 @@ import Logo from '../../assets/images/logo.svg';
 import Background from '../../assets/images/background.svg';
 import purpleHeartIcon from '../../assets/images/icons/purple-heart.svg';
 
+import { useAuth } from '../../contexts/auth';
+
 import './styles.css';
 
 function Login() {
-    const [email, setEmail] = useState('');
+    const history = useHistory();
+
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    function handleLogin() {
-        alert("Você fez login")
+    const { signIn } = useAuth();
+
+    async function handleLogin(e: FormEvent) {
+        e.preventDefault();
+        const response = await signIn(username, password);
+        if (response) {
+            history.push("/");
+        } else {
+            alert("Erro ao realizar login!")
+        }
     }
 
     return (
@@ -31,11 +43,11 @@ function Login() {
                     <h2>Fazer Login</h2>
                     <form onSubmit={handleLogin}>
                         <AuthInput
-                            name="email"
-                            placeholder="E-mail"
+                            name="username"
+                            placeholder="Nome de Usuário"
                             type="text"
-                            value={email}
-                            onChange={(e) => { setEmail(e.target.value) }}
+                            value={username}
+                            onChange={(e) => { setUsername(e.target.value) }}
                         />
                         <AuthInput
                             name="password"

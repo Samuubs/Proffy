@@ -78,6 +78,10 @@
     margin: 3.2rem auto;
 }
 
+.register-container main button:hover {
+    background-color: var(--color-secundary-dark);
+}
+
 .finished-register-container {
     height: 100vh;
     width: 100vw;
@@ -132,27 +136,8 @@
     z-index: 98;
 }
 
-.login-button {
-    z-index: 99;
-    width: 19.7rem;
-    height: 5.6rem;
-    border-radius: 0.8rem;
-    margin-right: 1.6rem;
-    font: 1.5rem Archivo;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    text-decoration: none;
-    color: var(--color-button-text);
-    background: var(--color-secundary);
-
-    transition: background-color 0.2s;
-}
-
-.login-button:hover {
-    background: var(--color-secundary-dark);
+.backToLogin {
+    align-self: flex-start;
 }
 
 
