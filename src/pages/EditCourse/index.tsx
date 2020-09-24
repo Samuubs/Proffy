@@ -1,5 +1,5 @@
 import React, { useState, FormEvent } from 'react';
-import { useHistory } from 'react-router-dom';
+import { RouteComponentProps, useHistory } from 'react-router-dom';
 
 import PageHeader from '../../components/PageHeader';
 import Input from '../../components/Input';
@@ -10,16 +10,38 @@ import api from '../../services/api';
 
 import './styles.css';
 
-function TeacherForm() {
-    const history = useHistory();
+export interface Curse {
+    avatar: string;
+    bio: string;
+    cost: number;
+    id: number;
+    name: string;
+    subject: string;
+    whatsapp: number;
+}
+  
+interface CurseItemProps {
+    curse: Curse;
+}
 
-    const [name, setName] = useState('');
-    const [avatar, setAvatar] = useState('');
-    const [bio, setBio] = useState('');
-    const [whatsapp, setWhatsapp] = useState('');
+interface Props extends RouteComponentProps<
+  { myParamProp?: string }, // this.props.match.params.myParamProp
+  any, // history
+  { curse?: Curse } // this.props.location.state.myStateProp
+> {
+  myNormalProp: boolean;
+}
 
-    const [subject, setSubject] = useState('');
-    const [cost, setCost] = useState('');
+function EditCourse(props: Props) {
+    console.log("funciona fdp", props.location.state);
+
+    const [name, setName] = useState(props.location.state.curse?.name);
+    const [avatar, setAvatar] = useState(props.location.state.curse?.avatar);
+    const [bio, setBio] = useState(props.location.state.curse?.bio);
+    const [whatsapp, setWhatsapp] = useState(props.location.state.curse?.whatsapp);
+
+    const [subject, setSubject] = useState(props.location.state.curse?.subject);
+    const [cost, setCost] = useState(props.location.state.curse?.cost);
 
     const [scheduleItems, setScheduleItems] = useState(
         [
@@ -106,7 +128,7 @@ function TeacherForm() {
                             name="whatsapp" 
                             label="Whatsapp" 
                             value={whatsapp} 
-                            onChange={(e) => {setWhatsapp(e.target.value)}}
+                            onChange={(e) => {setWhatsapp(parseInt(e.target.value))}}
                         />
 
                         <TextArea 
@@ -143,7 +165,7 @@ function TeacherForm() {
                             name="cost" 
                             label="Custo da sua hora por aula"
                             value={cost}
-                            onChange={(e) => setCost(e.target.value)}
+                            onChange={(e) => setCost(parseInt(e.target.value))}
                         />
                     </fieldset>
 
@@ -207,4 +229,4 @@ function TeacherForm() {
     )
 }
 
-export default TeacherForm;
+export default EditCourse;

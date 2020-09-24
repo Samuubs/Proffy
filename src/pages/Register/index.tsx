@@ -37,7 +37,6 @@ function FinishRegister() {
 
 function Register() {
     const [name, setName] = useState('');
-    const [lastName, setLastName] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [profile, setProfile] = useState('');
@@ -48,7 +47,6 @@ function Register() {
         e.preventDefault();
         const user = {
             name,
-            lastName,
             username,
             password,
             profile
@@ -91,14 +89,6 @@ function Register() {
                             type="text"
                             value={name}
                             onChange={(e) => { setName(e.target.value) }}
-                        />
-
-                        <AuthInput
-                            name="lastName"
-                            placeholder="Ultimo nome"
-                            type="text"
-                            value={lastName}
-                            onChange={(e) => { setLastName(e.target.value) }}
                         />
 
                         <AuthInput
