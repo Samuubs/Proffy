@@ -41,6 +41,29 @@
     justify-content: center;
 }
 
+.login-button {
+    width: 250px;
+    height: 56px;
+    height: 5.6rem;
+    background: var(--color-secundary);
+    color: var(--color-button-text);
+    border: 0;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    font: 700 1.6rem Archivo;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    margin: 3.2rem auto;
+    z-index: 999;
+}
+
+.login-button:hover {
+    background: var(--color-secundary-dark);
+}
+
 .register-container main {
     height: 100vh;
     display: flex;

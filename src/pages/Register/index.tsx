@@ -52,18 +52,21 @@ function Register() {
             profile
         }
 
-        const response = api.post('/users', user);
-        response.then(newUser => {
-            console.log(newUser);
-            if (response) {
-                setRegisterFinished(true);
-            } else {
-                alert("Erro ao realizar cadastro!");
-            }       
-        }).catch((error) => {
-            console.log(error);
-            alert("Erro ao realizar cadastro!");
-        })
+        // const response = api.post('/users', user);
+        // response.then(newUser => {
+        //     console.log(newUser);
+        //     if (response) {
+        //         setRegisterFinished(true);
+        //     } else {
+        //         alert("Erro ao realizar cadastro!");
+        //     }       
+        // }).catch((error) => {
+        //     console.log(error);
+        //     alert("Erro ao realizar cadastro!");
+        // })
+
+        // Apagar isso quando integrar com backend
+        setRegisterFinished(true);
     }
 
     if (registerFinished) {

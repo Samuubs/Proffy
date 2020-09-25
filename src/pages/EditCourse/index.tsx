@@ -19,10 +19,6 @@ export interface Curse {
     subject: string;
     whatsapp: number;
 }
-  
-interface CurseItemProps {
-    curse: Curse;
-}
 
 interface Props extends RouteComponentProps<
   { myParamProp?: string }, // this.props.match.params.myParamProp
@@ -33,8 +29,6 @@ interface Props extends RouteComponentProps<
 }
 
 function EditCourse(props: Props) {
-    console.log("funciona fdp", props.location.state);
-
     const [name, setName] = useState(props.location.state.curse?.name);
     const [avatar, setAvatar] = useState(props.location.state.curse?.avatar);
     const [bio, setBio] = useState(props.location.state.curse?.bio);

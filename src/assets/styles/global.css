@@ -21,6 +21,10 @@
     font-size: 60%;
 }
 
+*:focus {
+    outline: 0 !important;
+}
+
 * {
     margin: 0;
     padding: 0;

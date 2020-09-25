@@ -7,6 +7,7 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import MyCurses from '../pages/MyCourses';
 import EditCourses from '../pages/EditCourse';
+import UploadClasses from '../pages/UploadClasses';
 
 import TeacherRoute from './TeacherRoute';
 import GenericRoute from './GenericRoute';
@@ -23,6 +24,7 @@ const Routes: React.FC = () => {
                 <StudentRoute path="/study" component={TeacherList} />
                 <TeacherRoute path="/give-classes" component={TeacherForm} />
                 <TeacherRoute path="/edit-course" component={EditCourses} />
+                <TeacherRoute path="/add-classes" component={UploadClasses} />
             </Switch>
         </BrowserRouter>
     )

@@ -7,6 +7,7 @@ import landingImg from '../../assets/images/landing.svg';
 import studyIcon from '../../assets/images/icons/study.svg';
 import giveClassesIcon from '../../assets/images/icons/give-classes.svg';
 import purpleHeartIcon from '../../assets/images/icons/purple-heart.svg';
+import logoutIcon from '../../assets/images/icons/logout.svg';
 
 import { useAuth } from '../../contexts/auth';
 
@@ -39,7 +40,7 @@ function Landing() {
 
                     <Link to="/give-classes" className="secondaryActionButton">
                         <img src={giveClassesIcon} alt="Dar aulas" />
-                        Registrar Aula
+                        Registrar Curso
                     </Link>
                 </div>
             )
@@ -142,7 +143,10 @@ function Landing() {
                         <img src={user?.avatar} alt="" />
                         <h3>{user?.name}</h3>
                     </div>
-                    <button onClick={signOut}>Sair</button>
+                    <button onClick={signOut} style={{cursor: "pointer", backgroundColor: "transparent", color: "#FFF", outline: "nome", border: 0, display: "flex", alignItems: "center", justifyContent: "center"}}>
+                      <img src={logoutIcon} alt="sair" style={{width: "24px", height: "24px", marginRight: "12px"}}/>
+                      Sair
+                    </button>
                 </div>
                 <div id="page-landing-content" className="container">
                     <div className="logo-container">
