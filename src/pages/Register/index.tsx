@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import AuthInput from '../../components/AuthInput';
 import AuthSelect from '../../components/AuthSelect';
 
-import Logo from '../../assets/images/logo.svg';
+import Logo from '../../assets/images/logo.png';
 import Background from '../../assets/images/background.svg';
 import Check from '../../assets/images/icons/check.svg';
 import backIcon from '../../assets/images/icons/back.svg';

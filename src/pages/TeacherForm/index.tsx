@@ -80,17 +80,17 @@ function TeacherForm() {
     return (
         <div id="page-teacher-form" className="container">
             <PageHeader
-                title="Que incrível que você quer dar aulas."
+                title="Que incrível que você quer dar cursos."
                 description="O primeiro passo é preencher esse formulário de inscrição."
             />
             <main>
                 <form onSubmit={handleCreateClass}>
                     <fieldset>
-                        <legend>Seus dados</legend>
+                        <legend>Primeiro passo</legend>
 
                         <Input 
                             name="name" 
-                            label="Nome completo" 
+                            label="Nome do Curso" 
                             value={name} 
                             onChange={(e) => {setName(e.target.value)}} 
                         />
@@ -118,7 +118,7 @@ function TeacherForm() {
                     </fieldset>
 
                     <fieldset>
-                        <legend>Sobre a aula</legend>
+                        <legend>Segundo passo</legend>
                         <Select 
                             name="subject" 
                             label="Matéria"
@@ -141,7 +141,7 @@ function TeacherForm() {
 
                         <Input 
                             name="cost" 
-                            label="Custo da sua hora por aula"
+                            label="Valor do curso"
                             value={cost}
                             onChange={(e) => setCost(e.target.value)}
                         />
@@ -149,7 +149,7 @@ function TeacherForm() {
 
                     <fieldset>
                         <legend>
-                            Horários disponíveis
+                            Horários de Atendimento
                             <button type="button" onClick={addNewScheduleItem}>
                                 + Novo horário
                             </button>

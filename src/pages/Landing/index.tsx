@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, RouteComponentProps, useHistory } from 'react-router-dom';
 
-import logoImg from '../../assets/images/logo.svg';
+import logoImg from '../../assets/images/logo.png';
 import landingImg from '../../assets/images/landing.svg';
 
 import studyIcon from '../../assets/images/icons/study.svg';
@@ -61,7 +61,7 @@ function Landing() {
     }
 
     const dataTopCurses = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: ['Curso 1', 'Curso 2', 'Curso 3', 'Curso 4', 'Curso 5', 'Curso 6', 'Curso 7'],
         datasets: [
           {
             label: 'Alunos',
@@ -70,13 +70,13 @@ function Landing() {
             borderWidth: 1,
             hoverBackgroundColor: '#9871F5',
             hoverBorderColor: '#9871F5',
-            data: [65, 59, 80, 81, 56, 55, 40]
+            data: [100, 94, 80, 78, 71, 50, 42]
           }
         ]
     };
 
     const dataSemanalConections = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-Feira', 'Sábado', 'Domingo'],
         datasets: [
           {
             label: 'Conexões',
@@ -150,7 +150,7 @@ function Landing() {
                 </div>
                 <div id="page-landing-content" className="container">
                     <div className="logo-container">
-                        <img src={logoImg} alt="Proffy" />
+                        <img src={logoImg} alt="Proffy" width={350} />
                         <h2>Sua plataforma de estudos online.</h2>
                     </div>
 

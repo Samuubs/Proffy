@@ -6,12 +6,14 @@ import Background from '../../assets/images/background.svg';
 import Dropzone from 'react-dropzone';
 import socket from 'socket.io-client';
 
-import { MdInsertDriveFile } from 'react-icons/md'
+import { MdCheckCircle, MdError, MdLink } from "react-icons/md";
 
-import Logo from '../../assets/images/logo.svg';
+import Logo from '../../assets/images/logo-purple.png';
+import warningIcon from '../../assets/images/icons/warning.svg';
 
 import './styles.css';
 import PageHeader from "../../components/PageHeader";
+import Input from "../../components/Input";
 
 export interface Curse {
     avatar: string;
@@ -34,82 +36,74 @@ interface Props extends RouteComponentProps<
 function UploadClasses(props: Props) {
     const history = useHistory();
 
-    const [newClass, setClass] = useState('');
+    // const [newClasses, setClasses] = useState([]);
+    const [newClasses, setClasses] = useState({});
+    const [title, setTitle] = useState('');
 
-    const handleUpload = (files) => {
-        // files.forEach(file => {
-        //     const formData = new FormData();
-        //     const { id } = this.props.match.params;
-
-        //     formData.append('file', file);
-
-        //     api.post(`boxes/${id}/files`, formData);
-        // });
+    const handleUpload = (e: FormEvent) => {
+        e.preventDefault();
+        // @ts-ignore
+        if (newClasses.forEach !== undefined ) {
+            // @ts-ignore
+            newClasses.forEach(file => {
+                const formData = new FormData();
+                // const { id } = this.props.match.params;
+                console.log(title);
+                console.log(file);
+    
+                formData.append('file', file);
+    
+                // api.post(`boxes/${id}/files`, formData);
+            });
+        } else {
+            alert('Preencha todos os dados!');
+        }
     }
 
-    // const subscribeToNewFiles = () => {
-    //     const { id } = this.props.match.params;
-    //     const io = socket('https://omnistack-backend.herokuapp.com');
-
-    //     io.emit('connectRoom', id);
-    //     io.on('file', data => {
-    //         this.setState({
-    //             box: {
-    //                 ...this.state.box,
-    //                 files: [
-    //                     data,
-    //                     ...this.state.box.files,
-    //                 ]
-    //             }
-    //         })
-    //     })
-    // }
-
     return (
-        <div id="box-container">
-            <PageHeader title="Aqui você adiciona as aulas" description="Faça o upload dos arquivos de aula para seus alunos!" />
+        <div id="page-teacher-form" className="container">
+            <PageHeader
+                title="Que incrível que você quer dar aulas."
+                description="Faça o upload dos arquivos da aula para seus alunos!"
+            />
+            <main>
+                <form onSubmit={handleUpload}>
+                    <fieldset>
+                        <legend>Sobre a aula</legend>
 
-            <div className="dropfile">
-                <header>
-                    <img src={Logo} alt="Logo da aplicação" />
-                </header>
+                        <Input
+                            name="nome"
+                            label="Titulo da aula"
+                            value={title}
+                            onChange={(e) => {setTitle(e.target.value)}}
+                        />
+                    </fieldset>
 
-                <Dropzone onDropAccepted={handleUpload}>
-                    {({ getRootProps, getInputProps }) => (
-                        <div className="upload" {...getRootProps()}>
-                            <input {...getInputProps()} />
-                            <p>Arraste arquivos ou clique aqui</p>
-                        </div>
-                    )}
-                </Dropzone>
+                    <fieldset>
+                        <legend className="dropfile">
+                            <Dropzone onDropAccepted={(files) => { setClasses(files) }}>
+                                {({ getRootProps, getInputProps }) => (
+                                    <div className="upload" {...getRootProps()}>
+                                        <input {...getInputProps()} />
+                                        <p>Arraste arquivos ou clique aqui</p>
+                                    </div>
+                                )}
+                            </Dropzone>
+                        </legend>
+                    </fieldset>
 
-                {/* <ul>
-                    {newClass.files && this.state.box.files.map(file => (
-                        <li key={file._id}>
-                            <a className="fileInfo" href={file.url} target="_blank">
-                                <MdInsertDriveFile size={24} color="#A5CFFF" />
-                                <strong>{file.title}</strong>
-                            </a>
-                        </li>
-                    ))}
-                </ul> */}
-            </div>
+                    <footer>
+                        <p>
+                            <img src={warningIcon} alt="Aviso" />
+                            Importante! <br />
+                            Preencha todos os dados
+                        </p>
+                        <button type="submit">Enviar aula</button>
+                    </footer>
+                </form>
+            </main>
         </div>
-
-
-        // <div>
-        //     <div id="box-container" style={{ backgroundImage: `url(${Background})` }}>
-        //     <PageHeader
-        //         title="Que incrível que você quer dar aulas."
-        //         description="O primeiro passo é preencher esse formulário de inscrição."
-        //     />
-
-
-
-
-        //     </div>
-        // </div>
-    );
+    )
 }
 
 export default UploadClasses;

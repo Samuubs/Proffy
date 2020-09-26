@@ -21,7 +21,7 @@ function MyCourses(): ReactElement {
             name: "Curso 2", 
             avatar: "https://avatars3.githubusercontent.com/u/32658656?s=460&u=ecbdacd46202567458a58d4484a168edf91eac22&v=4", 
             whatsapp: 33133131,
-            bio: "Otário", 
+            bio: "Curso ruim, não vale a pena", 
             subject: "Biologia",
             cost: 1,
             id: 2

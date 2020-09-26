@@ -8,11 +8,32 @@ import Select from '../../components/Select';
 import './styles.css';
 
 function TeacherList(): ReactElement {
+  const mockData = [
+      {
+          name: "Curso 1", 
+          avatar: "https://avatars1.githubusercontent.com/u/33751384?s=460&u=bba99304003d18646b6e4ed1152f02a23f00d081&v=4", 
+          whatsapp: 33133131,
+          bio: "Melhor curso da plataforma de longe!", 
+          subject: "Fisica",
+          cost: 80,
+          id: 1
+      },
+      {
+          name: "Curso 2", 
+          avatar: "https://avatars3.githubusercontent.com/u/32658656?s=460&u=ecbdacd46202567458a58d4484a168edf91eac22&v=4", 
+          whatsapp: 33133131,
+          bio: "Curso ruim, não vale a pena", 
+          subject: "Biologia",
+          cost: 1,
+          id: 2
+      }
+  ]
+
   const [subject, setSubject] = useState('');
   const [weekDay, setWeekDay] = useState('');
   const [time, setTime] = useState('');
 
-  const [teachers, setTeachers] = useState([]);
+  const [teachers, setTeachers] = useState(mockData);
 
 //   useEffect(() => {
 //     // Fazer requisiçao para buscar todos os professores
@@ -38,7 +59,7 @@ function TeacherList(): ReactElement {
 
   return (
     <div id="page-teacher-list" className="container">
-      <PageHeader title="Estes são os proffys disponíveis.">
+      <PageHeader title="Estes são os cursos disponíveis.">
         <form id="search-teachers" onSubmit={searchTeachers}>
           <Select
             name="subject"
@@ -59,24 +80,9 @@ function TeacherList(): ReactElement {
               { value: 'Inglês', label: 'Inglês' },
             ]}
           />
-          <Select
-            name="week_day"
-            label="Dia da Semana"
-            value={weekDay}
-            onChange={e => { setWeekDay(e.target.value) }}
-            options={[
-              { value: '0', label: 'Domingo' },
-              { value: '1', label: 'Segunda-feira' },
-              { value: '2', label: 'Terça-feira' },
-              { value: '3', label: 'Quarta-feira' },
-              { value: '4', label: 'Quinta-feira' },
-              { value: '5', label: 'Sexta-feira' },
-              { value: '6', label: 'Sábado' },
-            ]}
-          />
           <Input 
             name="time" 
-            label="Hora" 
+            label="Horário de atendimento" 
             type="time" 
             value={time}
             onChange={e => { setTime(e.target.value) }}

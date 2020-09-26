@@ -8,6 +8,7 @@
     ],
     "allowJs": true,
     "noImplicitAny": false,
+    "suppressExcessPropertyErrors": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,

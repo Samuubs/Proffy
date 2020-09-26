@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 import AuthInput from '../../components/AuthInput';
 
-import Logo from '../../assets/images/logo.svg';
+import Logo from '../../assets/images/logo.png';
 import Background from '../../assets/images/background.svg';
 import purpleHeartIcon from '../../assets/images/icons/purple-heart.svg';
 
