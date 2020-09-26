@@ -92,7 +92,7 @@ function Landing() {
 
     const lineChartTopCurses = () => {
         return (
-            <div style={{marginBottom: 24}}>
+          <div style={{marginBottom: 24, textAlign: "center"}}>
               <h2>Cursos mais populares</h2>
               <Bar
                 data={dataTopCurses}
@@ -105,7 +105,7 @@ function Landing() {
                     }]
                   }
                 }}
-                width={500}
+                width={550}
                 height={500}
       
               />
@@ -115,7 +115,7 @@ function Landing() {
 
     const lineChartSemanalConections = () => {
         return (
-            <div style={{marginBottom: 24}}>
+            <div style={{marginBottom: 24, textAlign: "center"}}>
               <h2>Conexões na semana</h2>
               <Line
                 data={dataSemanalConections}
@@ -128,7 +128,7 @@ function Landing() {
                     }]
                   }
                 }}
-                width={500}
+                width={550}
                 height={500}    
               />
             </div>
